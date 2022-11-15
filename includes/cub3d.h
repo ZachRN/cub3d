@@ -30,22 +30,16 @@ enum mapDefintion
 /*Both the floor and the ceiling have identical structs. Seperated for clarity
 as they are seperate entities. Both will be parsed to contain an
 RGB value between 0-255 for each color respectfully.*/
-typedef struct s_floor
+typedef union u_rgba
 {
-	__uint8_t	r;
-	__uint8_t	g;
-	__uint8_t	b;
-}				t_floor;
-
-/*Both the floor and the ceiling have identical structs. Seperated for clarity
-as they are seperate entities. Both will be parsed to contain an
-RGB value between 0-255 for each color respectfully.*/
-typedef struct s_ceiling
-{
-	__uint8_t	r;
-	__uint8_t	g;
-	__uint8_t	b;
-}				t_ceiling;
+	unsigned int	rgba;
+	struct {
+		__uint8_t	r;
+		__uint8_t	g;
+		__uint8_t	b;
+		__uint8_t	a;
+	};
+}				t_rgba;
 
 /*This contains the path to each texture, one for each, north
 east, south, west. Where the math section will then be able to open the
@@ -60,14 +54,25 @@ typedef struct s_textures
 	char	*west;
 }				t_textures;
 
+/*This struct contains basic information for the map, including the direction character the player will be facing at start*/
+typedef struct s_map
+{
+	//Ask Michiel If he would prefer direction being a number to match ENUM or a character ilke 'W' 'S' 'N' 'E'
+	int		direction;
+	int		max_x;
+	int		max_y;
+}				t_map;
+
 /*This is the struct that contains all the information. Holding the
 floor, ceiling, and texture structs. as well as containing the 2d array of
 the parsed map.*/
 typedef struct s_cubed
 {
-	t_floor		floor;
-	t_ceiling	ceiling;
+	t_rgba		floor;
+	t_rgba		ceiling;
 	t_textures	textures;
+	t_map		info;
+	char		*map_file;
 	char		**map;
 }				t_cubed;
 
