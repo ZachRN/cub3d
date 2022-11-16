@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   initialize_cube.h                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:27:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:17:52 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/15 13:37:50 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 14:14:46 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+#ifndef INITIALIZE_CUBE_H
+# define INITIALIZE_CUBE_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+# include "cub3d.h"
+
+/*This struct initailizes the main struct of t_cubed from cub3d.h
+Setting ints to null, and char * to null*/
+t_cubed	initialize_cubed(void);
+
+#endif

@@ -6,17 +6,23 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:06:47 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/15 18:27:52 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 16:26:08 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "initialize.h"
-#include "parse_map.h"
+#include "initialize_cube.h"
+#include "parse.h"
 /*Headers here for testing but may (possibly) be removed later*/
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-
+void	checkleaks()
+{
+	system("leaks -q cub3d > report.log");
+	system("lsof -c cub3d >> report.log");
+}
 void	test_print_cubed(t_cubed *cube)
 {
 	printf("Map File:%s\n", cube->map_file);
@@ -31,13 +37,14 @@ int main(int argc, char *argv[])
 {
 	t_cubed cube;
 
+	atexit(checkleaks);
 	if (argc != 2)
 		return (0);
 	cube = initialize_cubed();
 	// cube.floor.rgba = 0xFF00FFFF;
-	// test_print_cubed(&cube);
-	cube = parse_map(cube, argv[1]); 
+	cube = parse_file(cube, argv[1]); 
+	test_print_cubed(&cube);
 	//in a non empty repo
 	(void)argv; // Just getting rid of -werror atm with this
-	return (0);
+	exit(EXIT_SUCCESS);
 }

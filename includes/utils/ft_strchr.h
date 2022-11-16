@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_strchr.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:27:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:17:52 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:08:56 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:09:27 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+#ifndef FT_STRCHR_H
+# define FT_STRCHR_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+char	*ft_strchr(const char *str, int c);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 13:31:37 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/15 18:16:23 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 12:00:03 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ static t_map initialize_info(void)
 {
 	t_map info;
 
-	info.direction = -1;
-	info.max_x = -1;
-	info.max_y = -1;
+	info.direction = 0;
+	info.player_x = 0;
+	info.player_y = 0;
+	info.max_x = 0;
+	info.max_y = 0;
 	return (info);
 }
 

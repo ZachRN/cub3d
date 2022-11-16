@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_strlcpy.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:27:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:17:52 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:11:00 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:11:27 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+#ifndef FT_STRLCPY_H
+# define FT_STRLCPY_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include <unistd.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+
+#endif

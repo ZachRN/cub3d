@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:21:43 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/15 17:15:42 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 16:30:51 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,39 @@
 
 void	extension_error_print(char *error, char *expected, char *input)
 {
-	write(2, "Error\n", ft_strlen("Error\n"));
+	write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 	if (!error || !expected || !input)
-		write(2, "Passed NULL to three_print_error\n",
+		write(STDERR_FILENO, "Passed NULL to three_print_error\n",
 			ft_strlen("Passed NULL to three_print_error\n"));
-	write(2, error, ft_strlen(error));
-	write(2, "\nExpected:[", ft_strlen("\nExpected:["));
-	write(2, expected, ft_strlen(expected));
-	write(2, "]\nReceived:[", ft_strlen("\n]Received:["));
-	write(2, input, ft_strlen(input));
-	write(2,"]\n",ft_strlen("]\n"));
+	write(STDERR_FILENO, error, ft_strlen(error));
+	write(STDERR_FILENO, "\nExpected:[", ft_strlen("\nExpected:["));
+	write(STDERR_FILENO, expected, ft_strlen(expected));
+	write(STDERR_FILENO, "]\nReceived:[", ft_strlen("\n]Received:["));
+	write(STDERR_FILENO, input, ft_strlen(input));
+	write(STDERR_FILENO,"]\n",ft_strlen("]\n"));
 	exit(EXIT_SUCCESS);
 }
 
 void	two_strings_error(char *str, char *str2)
 {
-	write(2, "Error\n", ft_strlen("Error\n"));
+	write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
 	if (!str || !str2)
-		write(2, "Passed NULL to three_print_error\n",
-			ft_strlen("Passed NULL to three_print_error\n"));
-	write(2, str, ft_strlen(str));
-	write(2, str2, ft_strlen(str2));
-	write(2, "\n", ft_strlen("\n"));
+		write(STDERR_FILENO, "Passed NULL to two_strings_error\n",
+			ft_strlen("Passed NULL to two_strings_error\n"));
+	write(STDERR_FILENO, str, ft_strlen(str));
+	write(STDERR_FILENO, str2, ft_strlen(str2));
+	write(STDERR_FILENO, "\n", ft_strlen("\n"));
+	exit(EXIT_SUCCESS);
+}
+
+void	one_string_error(char *str)
+{
+	write(STDERR_FILENO, "Error\n", ft_strlen("Error\n"));
+	if (!str)
+		write(STDERR_FILENO, "Passed NULL to one_string_error\n",
+			ft_strlen("Passed NULL to one_string_error\n"));
+	write(STDERR_FILENO, str, ft_strlen(str));
+	write(STDERR_FILENO, "\n", ft_strlen("\n"));
 	exit(EXIT_SUCCESS);
 }
 

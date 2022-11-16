@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:27:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:17:52 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:03:26 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:03:33 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+#include <unistd.h>
+
+char	*ft_strchr(const char *str, int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return ((char *)&str[i]);
 		i++;
-	return (i);
+	}
+	if (c == 0)
+		return ((char *)&str[i]);
+	return (NULL);
 }

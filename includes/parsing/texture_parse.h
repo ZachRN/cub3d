@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   texture_parse.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:27:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:17:52 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 14:47:34 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 16:13:59 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+#ifndef TEXTURE_PARSE_H
+# define TEXTURE_PARSE_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include "initialize_structs.h"
+#include "cub3d.h"
+
+char	*texture_parse(char *str);
+t_rgba color_parse(char *str);
+
+#endif

@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_calloc.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:27:11 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:17:52 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 15:54:16 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 15:54:57 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+#ifndef FT_CALLOC_H
+# define FT_CALLOC_H
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+#include <stdlib.h>
+
+void	*ft_calloc(size_t nmeb, size_t size);
+
+#endif

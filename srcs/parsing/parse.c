@@ -6,16 +6,19 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:18:08 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/15 16:59:06 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 16:14:46 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "cub3d_errors.h"
+#include "utils.h"
+#include "parse_nonmap_line.h"
 #include "extension_check.h"
 #include <fcntl.h>
+#include <unistd.h>
 
-t_cubed parse_map(t_cubed cube, char *map_file)
+t_cubed parse_file(t_cubed cube, char *map_file)
 {
 	int	map_fd;
 	cube.map_file = extension_check(map_file, ".cub");
@@ -24,5 +27,7 @@ t_cubed parse_map(t_cubed cube, char *map_file)
 	map_fd = open(cube.map_file, O_RDONLY);
 	if (map_fd < 0)
 		two_strings_error(OPEN_FAILUE, cube.map_file);
+	cube = non_map_parse(cube, map_fd);
+	close(map_fd);
 	return (cube);
 }
