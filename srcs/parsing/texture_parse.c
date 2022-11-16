@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:29:35 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:40:57 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 17:23:34 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ char	*texture_parse(char *str)
 	start = 2;
 	while (str[start] && str[start] == ' ')
 		start++;
-	end = ft_strlen(str);
+	end = ft_strlen(str) - 1;
 	while (end != start && str[end] == ' ')
 		end--;
-	return (ft_substr(str, start, end - start - 1));
+	if (end == start)
+		one_string_error("No path supplied");
+	return (ft_substr(str, start, end - start));
 }
 
 void	check_commas(char *str)
@@ -57,6 +59,8 @@ unsigned int	cubed_atoi(char *str)
 
 	i = 0;
 	num = 0;
+	if (!str || !str[0])
+		one_string_error("No number supplied to cubed_atoi");
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')

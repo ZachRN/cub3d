@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:13:24 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:32:40 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 17:10:36 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 
 static t_cubed determine_function(t_cubed cube, char *str)
 {
-	if (ft_strncmp(str, "NO ", 3) == 0)
+	if (ft_strncmp(str, "NO", 2) == 0)
 		cube.textures.north = texture_parse(str);
-	else if (ft_strncmp(str, "SO ", 3) == 0)
+	else if (ft_strncmp(str, "SO", 2) == 0)
 		cube.textures.south = texture_parse(str);
-	else if (ft_strncmp(str, "EA ", 3) == 0)
+	else if (ft_strncmp(str, "EA", 2) == 0)
 		cube.textures.east = texture_parse(str);
-	else if (ft_strncmp(str, "WE ", 3) == 0)
+	else if (ft_strncmp(str, "WE", 2) == 0)
 		cube.textures.west = texture_parse(str);
-	else if (ft_strncmp(str, "F ", 2) == 0)
+	else if (ft_strncmp(str, "F", 1) == 0)
 		cube.floor = color_parse(str);
-	else if (ft_strncmp(str, "C ", 2) == 0)
+	else if (ft_strncmp(str, "C", 1) == 0)
 		cube.ceiling = color_parse(str);
 	else if (ft_strncmp(str, "\n", 2))
 		one_string_error(UNEXPECTED_TOKEN);
@@ -119,5 +119,8 @@ t_cubed	non_map_parse(t_cubed cube, int map_fd)
 		cube = parse_line(cube, str, &checklist, &readline);
 		free(str);	
 	}
+	str = get_next_line(map_fd);
+	if (str && (str[0] != '0' || str[0] != '1' || str[0] != '2'))
+		one_string_error("Parse Error");
 	return (cube);
 }

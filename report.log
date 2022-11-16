@@ -1,14 +1,14 @@
 leaks Report Version: 4.0
-Process 21676: 168 nodes malloced for 18 KB
-Process 21676: 0 leaks for 0 total leaked bytes.
+Process 25202: 167 nodes malloced for 18 KB
+Process 25202: 0 leaks for 0 total leaked bytes.
 
 COMMAND   PID   USER   FD   TYPE DEVICE SIZE/OFF        NODE NAME
-cub3d   21676 znajda  cwd    DIR   1,13      476      622922 /Users/znajda/Desktop/cub3d
-cub3d   21676 znajda  txt    REG   1,13    23240      656073 /Users/znajda/Desktop/cub3d/cub3d
-cub3d   21676 znajda  txt    REG    1,9   973872 12892242905 /usr/lib/dyld
-cub3d   21676 znajda    0u   CHR   16,1  0t41571         669 /dev/ttys001
-cub3d   21676 znajda    1u   CHR   16,1  0t41571         669 /dev/ttys001
-cub3d   21676 znajda    2u   CHR   16,1  0t41571         669 /dev/ttys001
-cub3d   21676 znajda   12r   REG    1,9   730696 12898874326 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
-cub3d   21676 znajda   25w   REG   1,13        0      648352 /Users/znajda/Library/Application Support/Code/logs/20221116T114609/ptyhost.log
-cub3d   21676 znajda   27r   REG    1,9 17277624 12898875531 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar
+cub3d   25202 znajda  cwd    DIR   1,13      476      622922 /Users/znajda/Desktop/cub3d
+cub3d   25202 znajda  txt    REG   1,13    23240      659828 /Users/znajda/Desktop/cub3d/cub3d
+cub3d   25202 znajda  txt    REG    1,9   973872 12892242905 /usr/lib/dyld
+cub3d   25202 znajda    0u   CHR   16,0  0t29250         759 /dev/ttys000
+cub3d   25202 znajda    1u   CHR   16,0  0t29250         759 /dev/ttys000
+cub3d   25202 znajda    2u   CHR   16,0  0t29250         759 /dev/ttys000
+cub3d   25202 znajda   12r   REG    1,9   730696 12898874326 /Applications/Visual Studio Code.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.x86_64.bin
+cub3d   25202 znajda   25w   REG   1,13      271      656237 /Users/znajda/Library/Application Support/Code/logs/20221116T164209/ptyhost.log
+cub3d   25202 znajda   27r   REG    1,9 17277624 12898875531 /Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar

@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/15 16:45:41 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*extension_check(char *str, char *ext)
 		return (NULL);
 	str_len = ft_strlen(str);
 	ext_len = ft_strlen(ext);
-	if (str_len <= ext_len)	
+	if (str_len < ext_len)	
 		return (NULL);
 	while (ext_len >= 0)
 	{
