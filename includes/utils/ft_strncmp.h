@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse_map.h                                        :+:    :+:            */
+/*   ft_strncmp.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 16:48:05 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/15 16:49:28 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 13:54:56 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 13:56:27 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_MAP_H
-# define PARSE_MAP_H
+#ifndef FT_STRNCMP_H
+# define FT_STRNCMP_H
 
-#include "cub3d.h"
-
-t_cubed parse_map(t_cubed cube, char *str);
+int	ft_strncmp(const char *s1, const char *s2, size_t len);
 
 #endif

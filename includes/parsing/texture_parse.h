@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   texture_parse.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 14:47:34 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 16:13:59 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <unistd.h>
+#ifndef TEXTURE_PARSE_H
+# define TEXTURE_PARSE_H
 
-char	*extension_check(char *str, char *ext)
-{
-	int	str_len;
-	int	ext_len;
+#include "initialize_structs.h"
+#include "cub3d.h"
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
-	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
-	}
-	return (str);
-}
+char	*texture_parse(char *str);
+t_rgba color_parse(char *str);
+
+#endif

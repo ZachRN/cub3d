@@ -72,9 +72,11 @@ typedef struct s_textures
 typedef struct s_map
 {
 	//Ask Michiel If he would prefer direction being a number to match ENUM or a character ilke 'W' 'S' 'N' 'E'
-	int		direction;
-	int		max_x;
-	int		max_y;
+	unsigned int	direction;
+	unsigned int	player_x;
+	unsigned int	player_y;
+	unsigned int	max_x;
+	unsigned int	max_y;
 }				t_map;
 
 /*This is the struct that contains all the information. Holding the

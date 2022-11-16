@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   ft_strim.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 16:03:24 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 16:03:48 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <unistd.h>
+#ifndef FT_STRTRIM_H
+# define FT_STRTRIM_H
 
-char	*extension_check(char *str, char *ext)
-{
-	int	str_len;
-	int	ext_len;
+char	*ft_strtrim(char const *s1, char const *set);
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
-	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
-	}
-	return (str);
-}
+#endif

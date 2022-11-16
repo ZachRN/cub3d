@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   ft_strlcpy.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:11:00 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:11:27 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef FT_STRLCPY_H
+# define FT_STRLCPY_H
+
 #include <unistd.h>
 
-char	*extension_check(char *str, char *ext)
-{
-	int	str_len;
-	int	ext_len;
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
-	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
-	}
-	return (str);
-}
+#endif

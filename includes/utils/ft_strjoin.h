@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   ft_strjoin.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:10:29 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:10:56 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <unistd.h>
+#ifndef FT_STRJOIN_H
+# define FT_STRJOIN_H
 
-char	*extension_check(char *str, char *ext)
-{
-	int	str_len;
-	int	ext_len;
+char	*ft_strjoin(char const *s1, char const *s2);
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
-	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
-	}
-	return (str);
-}
+#endif

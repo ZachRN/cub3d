@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   initalize_structs.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 14:15:35 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 14:17:20 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <unistd.h>
+#include "initialize_structs.h"
 
-char	*extension_check(char *str, char *ext)
+void	init_checklist(t_checklist *checklist)
 {
-	int	str_len;
-	int	ext_len;
+	checklist->NO = 0;
+	checklist->SO = 0;
+	checklist->WE = 0;
+	checklist->EA = 0;
+	checklist->F = 0;
+	checklist->C = 0;
+}
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
-	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
-	}
-	return (str);
+void	init_readline(t_readline *readline)
+{
+	readline->line = 0;
+	readline->cur_char = 0;
 }

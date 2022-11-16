@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   ft_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:05:54 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 16:18:35 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include <stdlib.h>
 #include <unistd.h>
+#include "cub3d_errors.h"
+#include "ft_strlen.h"
 
-char	*extension_check(char *str, char *ext)
+char	*ft_strdup(const char *s)
 {
-	int	str_len;
-	int	ext_len;
+	char	*str;
+	int		strlen;
+	int		i;
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
+	strlen = ft_strlen(s);
+	str = malloc(sizeof(char) * (strlen + 1));
+	if (str == NULL)
+		two_strings_error(MALLOC_ERROR, "ft_strdup");
+	i = 0;
+	while (i < strlen)
 	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
+		str[i] = s[i];
+		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }

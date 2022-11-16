@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:03:26 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:03:33 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include <unistd.h>
 
-char	*extension_check(char *str, char *ext)
+char	*ft_strchr(const char *str, int c)
 {
-	int	str_len;
-	int	ext_len;
+	int	i;
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
+		if (str[i] == c)
+			return ((char *)&str[i]);
+		i++;
 	}
-	return (str);
+	if (c == 0)
+		return ((char *)&str[i]);
+	return (NULL);
 }

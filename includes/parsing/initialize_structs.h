@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   initialize_structs.h                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 14:16:20 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 14:17:24 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <unistd.h>
+#ifndef INITIALIZE_STRUCTS_H
+# define INITIALIZE_STRUCTS_H
 
-char	*extension_check(char *str, char *ext)
+
+typedef struct s_checklist
 {
-	int	str_len;
-	int	ext_len;
+	int	NO;
+	int	SO;
+	int	WE;
+	int	EA;
+	int	F;
+	int	C;
+}				t_checklist;
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
-	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
-	}
-	return (str);
-}
+typedef struct s_readline
+{
+	int			line;
+	int			cur_char;
+}				t_readline;
+
+void	init_checklist(t_checklist *checklist);
+void	init_readline(t_readline *readline);
+
+#endif

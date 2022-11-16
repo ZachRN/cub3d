@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   extension_check.c                                  :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/15 15:33:32 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:14:56 by znajda        ########   odam.nl         */
+/*   Created: 2022/11/16 12:06:39 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/16 12:06:51 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include <unistd.h>
 
-char	*extension_check(char *str, char *ext)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	str_len;
-	int	ext_len;
+	size_t	i;
 
-	if (!str || !ext)
-		return (NULL);
-	str_len = ft_strlen(str);
-	ext_len = ft_strlen(ext);
-	if (str_len < ext_len)	
-		return (NULL);
-	while (ext_len >= 0)
+	i = 0;
+	if (!dst)
+		return ((size_t)(NULL));
+	if (size == 0)
 	{
-		if (str[str_len] != ext[ext_len])
-			return (NULL);
-		str_len--;
-		ext_len--;
+		while (src[i] != '\0')
+			i++;
+		return (i);
 	}
-	return (str);
+	while ((i < size - 1) && (src[i] != '\0'))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }
