@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/14 15:56:39 by mteerlin      #+#    #+#                 */
+/*   Updated: 2022/11/14 20:12:51 by mteerlin      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
 /*STDINT includes __uint8_t instead of saying unsigned char for the
 floor and ceiling structs*/
-#include <stdint.h>
+# include <stdint.h>
+
+# define EPSILON 0.00001
 
 /*This is to more easily parse the 2d map array given so that we may call
 If Map[0][0] == Wall instead of Map[0][0] == 1, it brings a bit of clarity
@@ -16,7 +30,7 @@ map
 North, East, South, West, are all player character identifiers, only one
 may exist on the map at a time, and this determines the orientation of the
 player upon starting*/
-enum mapDefintion
+enum e_mapDefintion
 {
 	nonPlayable = -1,
 	empty = 0,
