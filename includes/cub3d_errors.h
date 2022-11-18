@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:22:09 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:12:56 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/18 12:44:31 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define TOO_LITTLE_COMMAS "Too little commas were found"
 # define NON_NUMBER_INPUT "Floor or Ceiling received a non numerical input"
 # define NUMBER_TOO_HIGH "Floor or Ceiling received a larger then 255 input"
+# define MAP_ENDED_BEFORE_MAP "There was no map associated with this file"
 
 void	extension_error_print(char *error, char *expected, char *input);
 void	two_strings_error(char *str, char *str2);

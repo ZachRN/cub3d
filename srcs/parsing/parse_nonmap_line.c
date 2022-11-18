@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:13:24 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:10:36 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/18 12:26:29 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,5 @@ t_cubed	non_map_parse(t_cubed cube, int map_fd)
 		cube = parse_line(cube, str, &checklist, &readline);
 		free(str);	
 	}
-	str = get_next_line(map_fd);
-	if (str && (str[0] != '0' || str[0] != '1' || str[0] != '2'))
-		one_string_error("Parse Error");
 	return (cube);
 }

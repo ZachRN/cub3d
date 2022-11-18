@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:06:47 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:26:08 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/18 19:57:36 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	test_print_cubed(t_cubed *cube)
 	printf("South Textures:%s\nWest Textures:%s\n", cube->textures.south, cube->textures.west);
 	printf("Ceiling R:[%d] G:[%d] B:[%d] a:[%d] Value: [%u]\n", cube->ceiling.r, cube->ceiling.g, cube->ceiling.b, cube->ceiling.a, cube->ceiling.rgba);
 	printf("Floor R:[%d] G:[%d] B:[%d] a:[%d] Value: [%u]\n", cube->floor.r, cube->floor.g, cube->floor.b, cube->floor.a, cube->floor.rgba);
-	printf("Player Direction: %d\nMax X: [%d] Max Y: [%d]\n", cube->info.direction, cube->info.max_x, cube->info.max_y);
+	printf("Player Direction: %d\nMax X: [%d] Max Y: [%d]\n", cube->info.direction, cube->info.max_cols, cube->info.max_rows);
+	printf("Player X:[%d] Player Y:[%d]", cube->info.player_x, cube->info.player_y);
 }
 
 int main(int argc, char *argv[])
