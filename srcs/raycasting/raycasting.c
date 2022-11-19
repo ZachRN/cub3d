@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:58:00 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 19:06:33 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 20:46:52 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,16 @@ t_column	*calculate_column(int window_height, t_ray *ray, u_int32_t *side)
 	column = malloc(sizeof(t_column));
 	if (!column)
 		exit(EXIT_FAILURE);
-	lineheight = (long int)(((double)window_height) / ray->wall_dist);
+	if (ray->wall_dist < EPSILON && ray->wall_dist > -EPSILON)
+		lineheight = window_height;
+	else
+		lineheight = (long int)(((double)window_height) / ray->wall_dist);
 	column->top = (-lineheight / 2) + (window_height / 2);
 	if (column->top < 0)
 		column->top = 0;
 	column->bottom = (lineheight / 2) + (window_height / 2);
 	if (column->bottom > window_height)
-		column->bottom = window_height - 1;
+		column->bottom = window_height;
 	if (*side == 1 && ray->dir.y > 0)
 		column->colour = 0xFF0000FF;
 	else if (*side == 1 && ray->dir.y < 0)
@@ -81,7 +84,7 @@ void	raycasting(t_scene *scene)
 	double		cam_x;
 
 	ft_memset(scene->wall_displ->pixels, 0, scene->wall_displ->width \
-			* scene->wall_displ->height * sizeof(int32_t));
+			* scene->wall_displ->height * sizeof(u_int32_t));
 	pxl_x = 0;
 	side = 0;
 	while (pxl_x < scene->wall_displ->width)

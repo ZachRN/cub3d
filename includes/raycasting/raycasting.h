@@ -6,14 +6,12 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 13:48:24 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 16:49:22 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 20:46:29 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
-
-# define EPSILON 0.00001
 
 #include "scene.h"
 #include "cub3d.h"
