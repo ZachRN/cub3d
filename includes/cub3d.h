@@ -75,8 +75,8 @@ typedef struct s_map
 	unsigned int	direction;
 	unsigned int	player_x;
 	unsigned int	player_y;
-	unsigned int	max_x;
-	unsigned int	max_y;
+	unsigned int	max_cols;
+	unsigned int	max_rows;
 }				t_map;
 
 /*This is the struct that contains all the information. Holding the
@@ -89,7 +89,7 @@ typedef struct s_cubed
 	t_textures	textures;
 	t_map		info;
 	char		*map_file;
-	char		**map;
+	int			**map;
 }				t_cubed;
 
 #endif

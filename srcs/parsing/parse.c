@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:18:08 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:14:46 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/18 14:23:48 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "utils.h"
 #include "parse_nonmap_line.h"
 #include "extension_check.h"
+#include "map_parse.h"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -28,6 +29,7 @@ t_cubed parse_file(t_cubed cube, char *map_file)
 	if (map_fd < 0)
 		two_strings_error(OPEN_FAILUE, cube.map_file);
 	cube = non_map_parse(cube, map_fd);
+	cube = parse_map(cube, map_fd);
 	close(map_fd);
 	return (cube);
 }

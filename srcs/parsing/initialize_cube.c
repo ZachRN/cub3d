@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   initialize.c                                       :+:    :+:            */
+/*   initialize_cube.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 13:31:37 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 12:00:03 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/18 17:52:21 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static t_map initialize_info(void)
 	info.direction = 0;
 	info.player_x = 0;
 	info.player_y = 0;
-	info.max_x = 0;
-	info.max_y = 0;
+	info.max_cols = 0;
+	info.max_rows = 0;
 	return (info);
 }
 
