@@ -6,22 +6,21 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:16:20 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 14:17:24 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 14:24:41 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INITIALIZE_STRUCTS_H
 # define INITIALIZE_STRUCTS_H
 
-
 typedef struct s_checklist
 {
-	int	NO;
-	int	SO;
-	int	WE;
-	int	EA;
-	int	F;
-	int	C;
+	int	no;
+	int	so;
+	int	we;
+	int	ea;
+	int	f;
+	int	c;
 }				t_checklist;
 
 typedef struct s_readline

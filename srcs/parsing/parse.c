@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:18:08 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 14:23:48 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 12:50:20 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-t_cubed parse_file(t_cubed cube, char *map_file)
+t_cubed	parse_file(t_cubed cube, char *map_file)
 {
 	int	map_fd;
+
 	cube.map_file = extension_check(map_file, ".cub");
 	if (!cube.map_file)
 		extension_error_print(WRONG_EXTENSION, "*.cub", map_file);

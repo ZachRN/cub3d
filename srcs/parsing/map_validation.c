@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   map_validation.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/19 12:50:25 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/19 13:12:15 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "cub3d_errors.h"
 #include "extension_check.h"
@@ -6,14 +18,15 @@
 
 void	check_edge(t_cubed cubed)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (i <= cubed.info.max_cols)
 	{
 		if (cubed.map[0][i] != nonPlayable && cubed.map[0][i] != wall)
 			one_string_error(MAP_NOT_SURRONDED);
-		if ((cubed.map[cubed.info.max_rows][i] != nonPlayable) && (cubed.map[cubed.info.max_rows][i] != wall))
+		if ((cubed.map[cubed.info.max_rows][i] != nonPlayable)
+			&& (cubed.map[cubed.info.max_rows][i] != wall))
 			one_string_error(MAP_NOT_SURRONDED);
 		i++;
 	}
@@ -22,7 +35,8 @@ void	check_edge(t_cubed cubed)
 	{
 		if (cubed.map[i][0] != nonPlayable && cubed.map[i][0] != wall)
 			one_string_error(MAP_NOT_SURRONDED);
-		if ((cubed.map[i][cubed.info.max_cols] != nonPlayable) && (cubed.map[i][cubed.info.max_cols] != wall))
+		if ((cubed.map[i][cubed.info.max_cols] != nonPlayable)
+			&& (cubed.map[i][cubed.info.max_cols] != wall))
 			one_string_error(MAP_NOT_SURRONDED);
 		i++;
 	}
@@ -50,8 +64,8 @@ void	check_around(t_cubed cube, unsigned int row, unsigned int col)
 
 void	check_inside_cube(t_cubed cubed)
 {
-	unsigned int row;
-	unsigned int col;
+	unsigned int	row;
+	unsigned int	col;
 
 	row = 1;
 	while (row < cubed.info.max_rows)
@@ -59,7 +73,8 @@ void	check_inside_cube(t_cubed cubed)
 		col = 1;
 		while (col < cubed.info.max_cols)
 		{
-			if (cubed.map[row][col] == empty)
+			if (cubed.map[row][col] != wall
+				&& cubed.map[row][col] != nonPlayable)
 				check_around(cubed, row, col);
 			col++;
 		}

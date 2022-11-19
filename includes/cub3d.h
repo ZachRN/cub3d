@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/11/19 14:25:36 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/19 14:26:23 by znajda        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
 /*STDINT includes __uint8_t instead of saying unsigned char for the
 floor and ceiling structs*/
-#include <stdint.h>
+# include <stdint.h>
 
 /*This is to more easily parse the 2d map array given so that we may call
 If Map[0][0] == Wall instead of Map[0][0] == 1, it brings a bit of clarity
@@ -16,7 +28,7 @@ map
 North, East, South, West, are all player character identifiers, only one
 may exist on the map at a time, and this determines the orientation of the
 player upon starting*/
-enum mapDefintion
+enum e_mapDefintion
 {
 	nonPlayable = -1,
 	empty = 0,
@@ -54,10 +66,10 @@ typedef struct s_textures
 	char	*west;
 }				t_textures;
 
-/*This struct contains basic information for the map, including the direction character the player will be facing at start*/
+/*This struct contains basic information for the map,
+including the direction character the player will be facing at start*/
 typedef struct s_map
 {
-	//Ask Michiel If he would prefer direction being a number to match ENUM or a character ilke 'W' 'S' 'N' 'E'
 	unsigned int	direction;
 	unsigned int	player_x;
 	unsigned int	player_y;

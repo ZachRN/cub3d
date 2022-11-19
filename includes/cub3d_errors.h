@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:22:09 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 12:44:31 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 14:25:25 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define NUMBER_TOO_HIGH "Floor or Ceiling received a larger then 255 input"
 # define MAP_ENDED_BEFORE_MAP "There was no map associated with this file"
 # define MAP_NOT_SURRONDED "The map isn't entirely filled with walls!"
+
 void	extension_error_print(char *error, char *expected, char *input);
 void	two_strings_error(char *str, char *str2);
 void	one_string_error(char *str);

@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:26:52 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 19:51:36 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 13:13:20 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 #include <stdio.h>
 
-t_cubed		malloc_cubed_map(t_cubed cube, t_list_map *head)
+t_cubed	malloc_cubed_map(t_cubed cube, t_list_map *head)
 {
-	t_list_map *search;
-	unsigned int i;
+	t_list_map		*search;
+	unsigned int	i;
 
 	i = 0;
 	search = head;
@@ -48,10 +48,10 @@ t_cubed		malloc_cubed_map(t_cubed cube, t_list_map *head)
 	return (cube);
 }
 
-t_cubed init_map(t_cubed cubed)
+t_cubed	init_map(t_cubed cubed)
 {
-	unsigned int cols;
-	unsigned int rows;
+	unsigned int	cols;
+	unsigned int	rows;
 
 	rows = 0;
 	while (rows <= cubed.info.max_rows)
@@ -67,41 +67,9 @@ t_cubed init_map(t_cubed cubed)
 	return (cubed);
 }
 
-void	validate_map(t_cubed cubed)
-{
-	unsigned int rows;
-	unsigned int cols;
-
-	rows = 0;
-	while (rows <= cubed.info.max_rows)
-	{
-		cols = 0;
-		while (cols <= cubed.info.max_cols)
-		{
-			if (cubed.map[rows][cols] == nonPlayable)
-				write(1, "x", 1);
-			else if (cubed.map[rows][cols] == wall)
-				write(1, "1", 1);
-			else if (cubed.map[rows][cols] == empty)
-				write(1, "0", 1);
-			else if (cubed.map[rows][cols] == north)
-				write(1, "N", 1);
-			else if (cubed.map[rows][cols] == east)
-				write(1, "E", 1);
-			else if (cubed.map[rows][cols] == south)
-				write(1, "S", 1);
-			else if (cubed.map[rows][cols] == west)
-				write(1, "W", 1);
-			cols++;
-		}
-		rows++;
-		write(1, "\n", 1);
-	}
-}
-
 void	delete_list(t_list_map *head)
 {
-	t_list_map *search;
+	t_list_map	*search;
 
 	search = head;
 	while (head)
@@ -112,16 +80,16 @@ void	delete_list(t_list_map *head)
 		free(search);
 	}
 }
-t_cubed parse_map(t_cubed cubed, int map_fd)
+
+t_cubed	parse_map(t_cubed cubed, int map_fd)
 {
-	t_list_map *head;
+	t_list_map	*head;
 
 	head = read_map_list(map_fd);
 	cubed = malloc_cubed_map(cubed, head);
 	cubed = init_map(cubed);
 	cubed = parse_list_to_map(cubed, head);
 	delete_list(head);
-	validate_map(cubed);
 	map_validation(cubed);
 	return (cubed);
 }
