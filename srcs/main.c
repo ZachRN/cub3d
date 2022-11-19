@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:06:47 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 16:51:56 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 18:23:15 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	checkleaks()
 	system("leaks -q cub3d > report.log");
 	system("lsof -c cub3d >> report.log");
 }
+
 void	test_print_cubed(t_cubed *cube)
 {
 	printf("Map File:%s\n", cube->map_file);
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 		return (0);
 	cube = initialize_cubed();
-	cube = parse_file(cube, argv[1]); 
+	cube = parse_file(cube, argv[1]);
 	test_print_cubed(&cube);
 	start_game_loop(&cube);
 	exit(EXIT_SUCCESS);

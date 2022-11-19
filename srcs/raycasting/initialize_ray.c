@@ -6,13 +6,15 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 14:07:11 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 16:21:39 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 18:56:25 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rays.h"
 #include <math.h>
 #include <stdlib.h>
+
+#include <stdio.h>
 
 static t_vector	*init_ray_delta_dist(t_vector raydir)
 {
@@ -44,7 +46,8 @@ static t_vector	*init_ray_side_dist(t_scene *scene, t_ray *ray)
 	if (ray->dir.x < 0)
 	{
 		ray->stepx *= -1;
-		sidedist->x = (scene->player->pos.x - (double)ray->mapx) * ray->delta_dist->x;
+		sidedist->x = (scene->player->pos.x - (double)ray->mapx) \
+						* ray->delta_dist->x;
 	}
 	else
 		sidedist->x = ((double)ray->mapx + 1.0 - scene->player->pos.x) \

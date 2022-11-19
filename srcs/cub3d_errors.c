@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:21:43 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:30:51 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 14:22:46 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	extension_error_print(char *error, char *expected, char *input)
 	write(STDERR_FILENO, expected, ft_strlen(expected));
 	write(STDERR_FILENO, "]\nReceived:[", ft_strlen("\n]Received:["));
 	write(STDERR_FILENO, input, ft_strlen(input));
-	write(STDERR_FILENO,"]\n",ft_strlen("]\n"));
+	write(STDERR_FILENO, "]\n", ft_strlen("]\n"));
 	exit(EXIT_SUCCESS);
 }
 
@@ -51,4 +51,3 @@ void	one_string_error(char *str)
 	write(STDERR_FILENO, "\n", ft_strlen("\n"));
 	exit(EXIT_SUCCESS);
 }
-

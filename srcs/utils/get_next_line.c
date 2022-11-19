@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 12:07:28 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 12:16:03 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 12:48:15 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*send_new_line(int fd, t_filehold *file, int pos)
 	return (temp);
 }
 
-char	*send_EOF(int fd, t_filehold *file, int pos)
+char	*send_eof(int fd, t_filehold *file, int pos)
 {
 	char	*temp;
 
@@ -64,7 +64,7 @@ char	*file_stuff(t_filehold *file, int fd)
 	if (file->all_fd[fd][pos] == '\n')
 		return (send_new_line(fd, file, pos));
 	else
-		return (send_EOF(fd, file, pos));
+		return (send_eof(fd, file, pos));
 }
 
 int	process_next_line(int fd, t_filehold *files, int readbytes)

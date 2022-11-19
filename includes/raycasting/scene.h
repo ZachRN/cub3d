@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:22:03 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 16:28:21 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 18:11:35 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_scene
 	int			**map;
 }	t_scene;
 
-t_scene		*init_scene(t_cubed *cubed, char *win_name);
+t_scene	*init_scene(t_cubed *cubed, char *win_name);
+void	free_scene(t_scene *scene);
 
 #endif

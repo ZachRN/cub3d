@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   cub3d.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
+/*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/11/14 15:56:39 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 17:11:39 by mteerlin      ########   odam.nl         */
+/*   Created: 2022/11/19 14:25:36 by znajda        #+#    #+#                 */
+/*   Updated: 2022/11/19 17:27:45 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ typedef struct s_textures
 	char	*west;
 }				t_textures;
 
-/*This struct contains basic information for the map, including the direction character the player will be facing at start*/
+/*This struct contains basic information for the map,
+including the direction character the player will be facing at start*/
 typedef struct s_map
 {
-	//Ask Michiel If he would prefer direction being a number to match ENUM or a character ilke 'W' 'S' 'N' 'E'
 	unsigned int	direction;
 	unsigned int	player_x;
 	unsigned int	player_y;

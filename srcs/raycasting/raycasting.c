@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:58:00 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 17:18:24 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 18:45:49 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "draw_images.h"
 #include "ft_memset.h"
 
-void	print_ray()
+#include <stdio.h>
 
 void	find_wall_distance(int **map, t_ray *ray, u_int32_t *side)
 {
@@ -40,7 +40,7 @@ void	find_wall_distance(int **map, t_ray *ray, u_int32_t *side)
 		if (map[ray->mapy][ray->mapx] == wall)
 			hit = wall;
 	}
-	if (side == 0)
+	if (*side == 0)
 		ray->wall_dist = (ray->side_dist->x - ray->delta_dist->x);
 	else
 		ray->wall_dist = (ray->side_dist->y - ray->delta_dist->y);
@@ -88,12 +88,13 @@ void	raycasting(t_scene *scene)
 	{
 		cam_x = (2.0 * (double)pxl_x) / (double)scene->wall_displ->width - 1.0;
 		cam_x += (1.0 / (2.0 * (double)scene->wall_displ->width));
-		printf("camx: %lf\n", cam_x);
 		ray = init_ray(scene, cam_x);
 		find_wall_distance(scene->map, ray, &side);
 		column = calculate_column(scene->window->height, ray, &side);
+		free_ray(ray);
 		draw_column(pxl_x, column, scene);
 		free(column);
 		pxl_x++;
 	}
+	printf("\n\n-----------------------------------------\n\n");
 }
