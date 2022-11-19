@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:18:08 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 12:50:20 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 16:30:51 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ t_cubed	parse_file(t_cubed cube, char *map_file)
 		two_strings_error(OPEN_FAILUE, cube.map_file);
 	cube = non_map_parse(cube, map_fd);
 	cube = parse_map(cube, map_fd);
-	close(map_fd);
 	return (cube);
 }

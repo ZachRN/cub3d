@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:26:52 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 13:13:20 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 16:38:34 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ t_cubed	parse_map(t_cubed cubed, int map_fd)
 	t_list_map	*head;
 
 	head = read_map_list(map_fd);
+	close(map_fd);
 	cubed = malloc_cubed_map(cubed, head);
 	cubed = init_map(cubed);
 	cubed = parse_list_to_map(cubed, head);

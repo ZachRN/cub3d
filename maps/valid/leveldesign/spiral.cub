@@ -1,0 +1,27 @@
+NO ./textures/bricks.png
+SO ./textures/cobblewall.png
+WE ./textures/woodplanks_color.png
+EA ./textures/woodplanks3.png
+
+F 220,100,0
+C 225,30,0
+
+11111
+11E011
+ 110011
+  110011
+   110011
+    110011
+     110011
+      110011
+       110011
+        110011
+         110011
+          110011
+           110011
+            110011
+             110011
+              110011
+               110011
+                110011
+                 11111
