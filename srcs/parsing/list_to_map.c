@@ -51,7 +51,9 @@ t_cubed parse_single_line(t_cubed cube, int line, char *str)
 	x = 0;
 	while (str && str[x])
 	{
-		is_in_set(str[x], " 01NSWE\n");
+		if (str[x] == '\n')
+			break ;
+		is_in_set(str[x], " 01NSWE");
 		if (str[x] == ' ')
 			cube.map[line][x] = nonPlayable;
 		else if (str[x] == '0')
@@ -64,6 +66,7 @@ t_cubed parse_single_line(t_cubed cube, int line, char *str)
 				one_string_error("Too many player characters found");
 			cube.info.player_y = line;
 			cube.info.player_x = x;
+			cube.map[line][x] = north;
 			cube = determine_player_direction(cube, str[x]);
 		}
 		x++;

@@ -15,6 +15,7 @@
 #include "cube_list.h"
 #include "list_to_map.h"
 #include "utils.h"
+#include "map_validation.h"
 
 #include <stdio.h>
 
@@ -28,12 +29,11 @@ t_cubed		malloc_cubed_map(t_cubed cube, t_list_map *head)
 	while (search->next)
 	{
 		if ((unsigned int)ft_strlen(search->str) > cube.info.max_cols)
-			cube.info.max_cols = (unsigned int)ft_strlen(search->str);
+			cube.info.max_cols = (unsigned int)ft_strlen(search->str) - 1;
 		search = search->next;
 	}
-	cube.info.max_rows = search->line;
-	cube.map = (int **)malloc(cube.info.max_rows * sizeof(int *));
-	// printf("line[%d] str[%d]\n", cube.info.max_rows, cube.info.max_cols);
+	cube.info.max_rows = search->line + 1;
+	cube.map = (int **)malloc((cube.info.max_rows + 1) * sizeof(int *));
 	if (!cube.map)
 		two_strings_error(MALLOC_ERROR, "map_parse.c; line");
 	while (i <= cube.info.max_rows)
@@ -43,14 +43,8 @@ t_cubed		malloc_cubed_map(t_cubed cube, t_list_map *head)
 			two_strings_error(MALLOC_ERROR, "map_parse.c; line");
 		i++;
 	}
-	// for (unsigned int x = 0; x <= cube.info.max_rows; x++)
-    // {
-	// 	 for (unsigned int y = 0; y <= cube.info.max_cols; y++)
-	// 	{
-	// 		write(1, "x", 1);
-	// 	}
-	// 	write(1, "\n", 1);
-	// }
+	cube.info.max_rows--;
+	cube.info.max_cols--;
 	return (cube);
 }
 
@@ -59,8 +53,6 @@ t_cubed init_map(t_cubed cubed)
 	unsigned int cols;
 	unsigned int rows;
 
-
-	// printf("max_rows[%d] max_cols[%d]\n", cubed.info.max_rows, cubed.info.max_cols);
 	rows = 0;
 	while (rows <= cubed.info.max_rows)
 	{
@@ -72,7 +64,6 @@ t_cubed init_map(t_cubed cubed)
 		}
 		rows++;
 	}
-	// printf("max_rows[%d] max_cols[%d]\n", cubed.info.max_rows, cubed.info.max_cols);
 	return (cubed);
 }
 
@@ -108,27 +99,19 @@ void	validate_map(t_cubed cubed)
 	}
 }
 
-t_list_map	*delete_list(t_list_map *head)
-{
-	if (!head)
-		return (NULL);
-	while (head)
-		head = delete_one_element(head);
-	return (NULL);
-}
-
-void display_list(t_list_map *head)
+void	delete_list(t_list_map *head)
 {
 	t_list_map *search;
 
 	search = head;
-	while (search)
+	while (head)
 	{
-	printf("line[%d] str[%s]\n", search->line, search->str);
-	search = search->next;
+		search = head;
+		head = head->next;
+		free(search->str);
+		free(search);
 	}
 }
-
 t_cubed parse_map(t_cubed cubed, int map_fd)
 {
 	t_list_map *head;
@@ -136,12 +119,9 @@ t_cubed parse_map(t_cubed cubed, int map_fd)
 	head = read_map_list(map_fd);
 	cubed = malloc_cubed_map(cubed, head);
 	cubed = init_map(cubed);
-	// validate_map(cubed);
-	// display_list(head);
 	cubed = parse_list_to_map(cubed, head);
-	// printf("4.0\n");
-	head = delete_list(head);
-	// printf("5.0\n");
+	delete_list(head);
 	validate_map(cubed);
+	map_validation(cubed);
 	return (cubed);
 }

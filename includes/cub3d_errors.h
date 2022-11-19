@@ -30,7 +30,7 @@
 # define NON_NUMBER_INPUT "Floor or Ceiling received a non numerical input"
 # define NUMBER_TOO_HIGH "Floor or Ceiling received a larger then 255 input"
 # define MAP_ENDED_BEFORE_MAP "There was no map associated with this file"
-
+# define MAP_NOT_SURRONDED "The map isn't entirely filled with walls!"
 void	extension_error_print(char *error, char *expected, char *input);
 void	two_strings_error(char *str, char *str2);
 void	one_string_error(char *str);

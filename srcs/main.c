@@ -30,8 +30,8 @@ void	test_print_cubed(t_cubed *cube)
 	printf("South Textures:%s\nWest Textures:%s\n", cube->textures.south, cube->textures.west);
 	printf("Ceiling R:[%d] G:[%d] B:[%d] a:[%d] Value: [%u]\n", cube->ceiling.r, cube->ceiling.g, cube->ceiling.b, cube->ceiling.a, cube->ceiling.rgba);
 	printf("Floor R:[%d] G:[%d] B:[%d] a:[%d] Value: [%u]\n", cube->floor.r, cube->floor.g, cube->floor.b, cube->floor.a, cube->floor.rgba);
-	printf("Player Direction: %d\nMax X: [%d] Max Y: [%d]\n", cube->info.direction, cube->info.max_cols, cube->info.max_rows);
-	printf("Player X:[%d] Player Y:[%d]", cube->info.player_x, cube->info.player_y);
+	printf("Player Direction: %d\nMax cols: [%d] Max rows: [%d]\n", cube->info.direction, cube->info.max_cols, cube->info.max_rows);
+	printf("Player X:[%d] Player Y:[%d]\n", cube->info.player_x, cube->info.player_y);
 }
 
 int main(int argc, char *argv[])
@@ -42,10 +42,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 		return (0);
 	cube = initialize_cubed();
-	// cube.floor.rgba = 0xFF00FFFF;
 	cube = parse_file(cube, argv[1]); 
 	test_print_cubed(&cube);
-	//in a non empty repo
-	(void)argv; // Just getting rid of -werror atm with this
 	exit(EXIT_SUCCESS);
 }

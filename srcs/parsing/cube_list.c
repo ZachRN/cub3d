@@ -33,7 +33,7 @@ static t_list_map	*list_add_to_end(t_list_map *head, char *str)
 	return (to_add);
 }
 
-void	add_lexer_to_end(t_list_map *head, t_list_map *tail)
+void	add_list_to_end(t_list_map *head, t_list_map *tail)
 {
 	t_list_map	*temp;
 
@@ -63,7 +63,7 @@ static t_list_map *get_all_lines(char *str, int map_fd)
 	while (str)
 	{
 		new = list_add_to_end(head, str);
-		add_lexer_to_end(head, new);
+		add_list_to_end(head, new);
 		str = get_next_line(map_fd);
 		if (str && str[0] == '\n')
 			one_string_error("Newline seperating in the map");
@@ -71,29 +71,12 @@ static t_list_map *get_all_lines(char *str, int map_fd)
 	return (head);
 }
 
-t_list_map *delete_one_element(t_list_map *to_remove)
-{
-	t_list_map	*to_return;
-
-	to_return = NULL;
-	if (!to_remove)
-		return (NULL);
-	to_return = to_remove->next;
-	if (to_remove->str)
-		free(to_remove->str);
-	to_remove->str = NULL;
-	if (to_remove)
-		free(to_remove);
-	to_remove = NULL;
-	return (to_return);
-}
-
-
 t_list_map *read_map_list(int map_fd)
 {
 	char *str;
 	t_list_map *to_hold;
 
+	to_hold = NULL;
 	str = get_next_line(map_fd);
 	while (str && str[0] == '\n')
 	{
