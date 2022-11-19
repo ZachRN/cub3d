@@ -86,4 +86,6 @@ void	map_validation(t_cubed cubed)
 	check_edge(cubed);
 	check_inside_cube(cubed);
 	check_texture_extension(cubed);
+	if (!cubed.info.player_x)
+		one_string_error("No player Character Found");
 }
