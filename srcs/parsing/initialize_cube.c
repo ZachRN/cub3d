@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 13:31:37 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 17:52:21 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 14:22:10 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static t_rgba	initialize_colors(void)
 {
-	t_rgba to_return;
+	t_rgba	to_return;
 
 	to_return.r = 0;
 	to_return.g = 0;
@@ -24,9 +24,9 @@ static t_rgba	initialize_colors(void)
 	return (to_return);
 }
 
-static t_map initialize_info(void)
+static t_map	initialize_info(void)
 {
-	t_map info;
+	t_map	info;
 
 	info.direction = 0;
 	info.player_x = 0;
@@ -36,9 +36,9 @@ static t_map initialize_info(void)
 	return (info);
 }
 
-static t_textures initialize_textures(void)
+static t_textures	initialize_textures(void)
 {
-	t_textures textures;
+	t_textures	textures;
 
 	textures.north = NULL;
 	textures.west = NULL;
@@ -49,7 +49,7 @@ static t_textures initialize_textures(void)
 
 t_cubed	initialize_cubed(void)
 {
-	t_cubed cubed;
+	t_cubed	cubed;
 
 	cubed.floor = initialize_colors();
 	cubed.ceiling = initialize_colors();

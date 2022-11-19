@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:29:35 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 17:23:34 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 17:17:23 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ char	*texture_parse(char *str)
 
 void	check_commas(char *str)
 {
-	int i;
-	int comma;
+	int	i;
+	int	comma;
 
 	comma = 0;
 	i = 0;
@@ -54,8 +54,8 @@ void	check_commas(char *str)
 
 unsigned int	cubed_atoi(char *str)
 {
-	unsigned int i;
-	unsigned int num;
+	unsigned int	i;
+	unsigned int	num;
 
 	i = 0;
 	num = 0;
@@ -73,12 +73,17 @@ unsigned int	cubed_atoi(char *str)
 	return (num);
 }
 
-t_rgba color_parse(char *str)
+int	create_trgb(int t, int r, int g, int b)
 {
-	t_rgba to_return;
-	char **split_to;
-	char *to_trim;
-	int start;
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+t_rgba	color_parse(char *str)
+{
+	t_rgba	to_return;
+	char	**split_to;
+	char	*to_trim;
+	int		start;
 
 	start = 1;
 	check_commas(str);
@@ -95,6 +100,7 @@ t_rgba color_parse(char *str)
 	to_return.b = cubed_atoi(to_trim);
 	free(to_trim);
 	free_my_lines(split_to);
-	to_return.a = 255; // maybe change, ask michiel
+	to_return.a = 0;
+	to_return.rgba = create_trgb(to_return.r, to_return.g, to_return.b, to_return.a);
 	return (to_return);
 }

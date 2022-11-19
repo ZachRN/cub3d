@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:13:24 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 12:26:29 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 14:28:04 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 
-static t_cubed determine_function(t_cubed cube, char *str)
+static t_cubed	determine_function(t_cubed cube, char *str)
 {
 	if (ft_strncmp(str, "NO", 2) == 0)
 		cube.textures.north = texture_parse(str);
@@ -39,48 +39,48 @@ static t_cubed determine_function(t_cubed cube, char *str)
 
 static void	duplicate_check(t_checklist *checklist, char c)
 {
-	if (checklist->NO && c == 'N')
+	if (checklist->no && c == 'N')
 		one_string_error(NORTH_EXISTS);
 	else if (c == 'N')
-		checklist->NO = 1;
-	if (checklist->SO && c == 'S')
+		checklist->no = 1;
+	if (checklist->so && c == 'S')
 		one_string_error(SOUTH_EXISTS);
 	else if (c == 'S')
-		checklist->SO = 1;
-	if (checklist->EA && c == 'E')
+		checklist->so = 1;
+	if (checklist->ea && c == 'E')
 		one_string_error(EAST_EXISTS);
 	else if (c == 'E')
-		checklist->EA = 1;
-	if (checklist->WE && c == 'W')
+		checklist->ea = 1;
+	if (checklist->we && c == 'W')
 		one_string_error(WEST_EXISTS);
 	else if (c == 'W')
-		checklist->WE = 1;
-	if (checklist->F && c == 'F')
+		checklist->we = 1;
+	if (checklist->f && c == 'F')
 		one_string_error(FLOOR_EXISTS);
 	else if (c == 'F')
-		checklist->F = 1;
-	if (checklist->C && c == 'C')
+		checklist->f = 1;
+	if (checklist->c && c == 'C')
 		one_string_error(CEILING_EXISTS);
 	else if (c == 'C')
-		checklist->C = 1;
+		checklist->c = 1;
 }
 
-static t_cubed parse_line(t_cubed cube, char *str, t_checklist *checklist,
+static t_cubed	parse_line(t_cubed cube, char *str, t_checklist *checklist,
 			t_readline *readline)
 {
 	static char	charset[7] = "\nNSWEFC";
-	int		i;
+	int			i;
 
 	i = 0;
 	readline->line++;
 	while (charset[i])
 	{
 		if (str[0] == charset[i])
-			break;
+			break ;
 		i++;
 	}
 	if (!charset[i])
-		one_string_error(UNEXPECTED_TOKEN); // MAYBE CHANGE LATER TO PRINT OUT LINE NUMBER
+		one_string_error(UNEXPECTED_TOKEN);
 	duplicate_check(checklist, charset[i]);
 	cube = determine_function(cube, str);
 	return (cube);
@@ -88,26 +88,26 @@ static t_cubed parse_line(t_cubed cube, char *str, t_checklist *checklist,
 
 static int	checklist_notover(t_checklist checklist)
 {
-	if (!checklist.NO)
+	if (!checklist.no)
 		return (1);
-	if (!checklist.SO)
+	if (!checklist.so)
 		return (1);
-	if (!checklist.WE)
+	if (!checklist.we)
 		return (1);
-	if (!checklist.EA)
+	if (!checklist.ea)
 		return (1);
-	if (!checklist.F)
+	if (!checklist.f)
 		return (1);
-	if (!checklist.C)
+	if (!checklist.c)
 		return (1);
 	return (0);
 }
 
 t_cubed	non_map_parse(t_cubed cube, int map_fd)
 {
-	t_checklist checklist;
+	t_checklist	checklist;
 	t_readline	readline;
-	char	*str;
+	char		*str;
 
 	init_checklist(&checklist);
 	init_readline(&readline);
@@ -117,7 +117,7 @@ t_cubed	non_map_parse(t_cubed cube, int map_fd)
 		if (!str)
 			one_string_error(MAP_EARLY_END);
 		cube = parse_line(cube, str, &checklist, &readline);
-		free(str);	
+		free(str);
 	}
 	return (cube);
 }

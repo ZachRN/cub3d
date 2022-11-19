@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 13:27:02 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 19:57:24 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 16:38:41 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	is_in_set(char c, char *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -31,7 +31,7 @@ void	is_in_set(char c, char *set)
 	one_string_error("Found invalid character within map parsing");
 }
 
-t_cubed determine_player_direction(t_cubed cube, char c)
+t_cubed	determine_player_direction(t_cubed cube, char c)
 {
 	if (c == 'N')
 		cube.info.direction = north;
@@ -44,16 +44,14 @@ t_cubed determine_player_direction(t_cubed cube, char c)
 	return (cube);
 }
 
-t_cubed parse_single_line(t_cubed cube, int line, char *str)
+t_cubed	parse_single_line(t_cubed cube, int line, char *str)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (str && str[x])
 	{
-		if (str[x] == '\n')
-			break ;
-		is_in_set(str[x], " 01NSWE");
+		is_in_set(str[x], " 01NSWE\n");
 		if (str[x] == ' ')
 			cube.map[line][x] = nonPlayable;
 		else if (str[x] == '0')
@@ -74,9 +72,9 @@ t_cubed parse_single_line(t_cubed cube, int line, char *str)
 	return (cube);
 }
 
-t_cubed parse_list_to_map(t_cubed cube, t_list_map *head)
+t_cubed	parse_list_to_map(t_cubed cube, t_list_map *head)
 {
-	t_list_map *search;
+	t_list_map	*search;
 
 	search = head;
 	while (search)

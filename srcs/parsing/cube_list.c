@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:27:14 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 19:56:53 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 14:21:34 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 static t_list_map	*list_add_to_end(t_list_map *head, char *str)
 {
-	t_list_map *to_add;
-	t_list_map *get_to_end;
+	t_list_map	*to_add;
+	t_list_map	*get_to_end;
 
 	to_add = (t_list_map *)malloc(sizeof(t_list_map));
 	if (!to_add)
@@ -46,10 +46,10 @@ void	add_list_to_end(t_list_map *head, t_list_map *tail)
 	return ;
 }
 
-static t_list_map *get_all_lines(char *str, int map_fd)
+static t_list_map	*get_all_lines(char *str, int map_fd)
 {
-	t_list_map *head;
-	t_list_map *new;
+	t_list_map	*head;
+	t_list_map	*new;
 
 	head = (t_list_map *)malloc(sizeof(t_list_map));
 	if (!head)
@@ -71,10 +71,10 @@ static t_list_map *get_all_lines(char *str, int map_fd)
 	return (head);
 }
 
-t_list_map *read_map_list(int map_fd)
+t_list_map	*read_map_list(int map_fd)
 {
-	char *str;
-	t_list_map *to_hold;
+	char		*str;
+	t_list_map	*to_hold;
 
 	to_hold = NULL;
 	str = get_next_line(map_fd);
