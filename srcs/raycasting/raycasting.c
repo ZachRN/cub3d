@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:58:00 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 18:45:49 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 19:06:33 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,4 @@ void	raycasting(t_scene *scene)
 		free(column);
 		pxl_x++;
 	}
-	printf("\n\n-----------------------------------------\n\n");
 }
