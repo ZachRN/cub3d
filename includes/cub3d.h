@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/14 15:56:39 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/14 20:12:51 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 12:25:57 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 /*STDINT includes __uint8_t instead of saying unsigned char for the
 floor and ceiling structs*/
 # include <stdint.h>
-
-# define EPSILON 0.00001
 
 /*This is to more easily parse the 2d map array given so that we may call
 If Map[0][0] == Wall instead of Map[0][0] == 1, it brings a bit of clarity
