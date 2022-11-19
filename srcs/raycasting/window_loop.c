@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 15:17:55 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 15:37:50 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 16:49:16 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 #include "scene.h"
 #include "draw_images.h"
 #include "input_hooks.h"
+#include "raycasting.h"
 
-void	cub3d(t_cubed *cubed)
+void	start_game_loop(t_cubed *cubed)
 {
-	t_scene		scene;
+	t_scene		*scene;
 	mlx_image_t	*background;
 
-	scene = init_scene(cubed->info, "Cub3d");
+	scene = init_scene(cubed, "Cub3d");
 	background = set_background(scene, cubed);
-	raycasting(scene, cubed->map);
-	mlx_image_to_window(scene->window, scene->wall_disp, 0, 0);
+	raycasting(scene);
+	mlx_image_to_window(scene->window, scene->wall_displ, 0, 0);
 	mlx_loop_hook(scene->window, &hooks, scene);
 	mlx_key_hook(scene->window, &keyhooks, scene);
 	mlx_loop(scene->window);

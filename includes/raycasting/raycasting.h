@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 13:48:24 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 13:49:36 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 16:49:22 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 # define RAYCASTING_H
 
 # define EPSILON 0.00001
+
+#include "scene.h"
+#include "cub3d.h"
+
+void	start_game_loop(t_cubed *cubed);
+void	raycasting(t_scene *scene);
 
 #endif

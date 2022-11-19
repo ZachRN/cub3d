@@ -6,12 +6,14 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 14:06:15 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 14:10:57 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 16:21:05 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 # define RAYS_H
+
+# define EPSILON 0.00001
 
 #include "vector_maths.h"
 #include "scene.h"

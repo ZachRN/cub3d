@@ -6,11 +6,12 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 14:07:11 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 14:39:10 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 16:21:39 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rays.h"
+#include <math.h>
 #include <stdlib.h>
 
 static t_vector	*init_ray_delta_dist(t_vector raydir)
@@ -21,39 +22,41 @@ static t_vector	*init_ray_delta_dist(t_vector raydir)
 	if (!delta_dist)
 		exit(EXIT_FAILURE);
 	if (raydir.x < EPSILON && raydir.x > -1.0 * EPSILON)
-		delta_dist.x = pow(10, 30);
+		delta_dist->x = pow(10, 30);
 	else
-		delta_dist.x = fabs(1 / raydir.x);
+		delta_dist->x = fabs(1 / raydir.x);
 	if (raydir.y < EPSILON && raydir.y > -1.0 * EPSILON)
-		delta_dist.y = pow(10, 30);
+		delta_dist->y = pow(10, 30);
 	else
-		delta_dist.y = fabs(1 / raydir.y);
+		delta_dist->y = fabs(1 / raydir.y);
 	return (delta_dist);
 }
 
-static t_vector	*init_ray_side_dist(t_scene scene, t_ray *ray)
+static t_vector	*init_ray_side_dist(t_scene *scene, t_ray *ray)
 {
 	t_vector	*sidedist;
 
-	sidedist = malloc(sizeof(vector));
+	sidedist = malloc(sizeof(t_vector));
 	if (!sidedist)
 		exit(EXIT_FAILURE);
 	ray->stepx = 1;
 	ray->stepy = 1;
-	if (raydir.x < 0)
+	if (ray->dir.x < 0)
 	{
-		stepx *= -1;
-		sidedist.x = (scene->player->pos.x - (double)mapx) * deltadist.x;
+		ray->stepx *= -1;
+		sidedist->x = (scene->player->pos.x - (double)ray->mapx) * ray->delta_dist->x;
 	}
 	else
-		sidedist.x = ((double)mapx + 1.0 - scene->player->pos.x) * deltadist.x;
-	if (raydir.y < 0)
+		sidedist->x = ((double)ray->mapx + 1.0 - scene->player->pos.x) \
+						* ray->delta_dist->x;
+	if (ray->dir.y < 0)
 	{
-		stepy = -1;
-		sidedist.y = (scene->player->pos.y - mapy) * deltadist.y;
+		ray->stepy = -1;
+		sidedist->y = (scene->player->pos.y - ray->mapy) * ray->delta_dist->y;
 	}
 	else
-		sidedist.y = ((double)mapy + 1 - scene->player->pos.y) * deltadist.y;
+		sidedist->y = ((double)ray->mapy + 1 - scene->player->pos.y) \
+						* ray->delta_dist->y;
 	return (sidedist);
 }
 
@@ -71,6 +74,7 @@ t_ray	*init_ray(t_scene *scene, double cam_x)
 	ray->delta_dist = init_ray_delta_dist(ray->dir);
 	ray->side_dist = init_ray_side_dist(scene, ray);
 	ray->wall_dist = 0;
+	return (ray);
 }
 
 void	free_ray(t_ray *ray)

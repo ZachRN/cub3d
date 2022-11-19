@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:22:03 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 14:32:49 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 16:28:21 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SCENE_H
 
 # include "vector_maths.h"
-# include "../mlx42/include/MLX42/MLX42.h"
+# include "MLX42.h"
+# include "cub3d.h"
 
 typedef struct s_player
 {
@@ -32,9 +33,9 @@ typedef struct s_scene
 	mlx_t		*window;
 	t_player	*player;
 	mlx_image_t	*wall_displ;
+	int			**map;
 }	t_scene;
 
-t_scene		*init_scene(t_map *map_info, char *win_name);
-t_player	*init_player(int posx, int posy, int fov, int startdir);
+t_scene		*init_scene(t_cubed *cubed, char *win_name);
 
 #endif

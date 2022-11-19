@@ -6,11 +6,12 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:09:26 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 12:12:18 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 16:45:18 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector_maths.h"
+#include <math.h>
 
 t_vector	rotate_vector(double phi, t_vector vector)
 {

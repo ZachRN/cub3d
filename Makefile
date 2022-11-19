@@ -5,18 +5,25 @@ SRCS += $(wildcard srcs/*.c srcs/*/*.c)
 OBJ_FILES = $(addprefix $(BUILD_DIR)/, $(notdir $(patsubst %.c, %.o, $(SRCS))))
 HEADER_FILES := $(addprefix -I,$(shell find includes -type d -print))
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+MLXFLAGS = -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+MLXDIR = ./includes/mlx42/
+MLXLIB = $(MLXDIR)libmlx42.a
 CC = gcc
 #Makefile will need to include additonal things for compiling with the
 #graphical library, i pulled my minishell makefile, not fractol
 all: build_dir $(NAME)
 
-$(NAME): $(OBJ_FILES)
+$(NAME): $(MLXLIB) $(OBJ_FILES)
 	@echo Assembling $(NAME)
-	@$(CC) -o $@ $^ $(CFLAGS)
+	@$(CC) $(MLXLIB) -o $@ $^ $(CFLAGS) $(MLXFLAGS)
 	@echo $(NAME) has been made!
 
 $(BUILD_DIR)/%.o: %.c
 	@$(CC) $(HEADER_FILES) -c $(CFLAGS) -o $@ $<
+
+$(MLXLIB):
+	@echo Generating mlx42
+	@make -C $(MLXDIR) > /dev/null
 
 build_dir:
 	clear

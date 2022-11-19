@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:26:16 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/16 16:16:41 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 16:42:10 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 #include "ft_strtrim.h"
 #include "ft_split.h"
 #include "ft_calloc.h"
+#include "ft_memset.h"
 
 #endif

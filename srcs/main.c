@@ -6,13 +6,14 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:06:47 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/18 19:57:36 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/19 16:51:56 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "initialize_cube.h"
 #include "parse.h"
+#include "raycasting.h"
 /*Headers here for testing but may (possibly) be removed later*/
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,11 +39,12 @@ int main(int argc, char *argv[])
 {
 	t_cubed cube;
 
-	atexit(checkleaks);
+	// atexit(checkleaks);
 	if (argc != 2)
 		return (0);
 	cube = initialize_cubed();
 	cube = parse_file(cube, argv[1]); 
 	test_print_cubed(&cube);
+	start_game_loop(&cube);
 	exit(EXIT_SUCCESS);
 }

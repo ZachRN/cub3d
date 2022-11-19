@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:58:00 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 15:11:15 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/19 17:18:24 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,26 @@
 #include <stdlib.h>
 #include "rays.h"
 #include "draw_images.h"
+#include "ft_memset.h"
 
-typedef struct s_cullumn
-{
-	int			top;
-	int			bottom;
-	uint32_t	colour;
-}	t_collumn;
+void	print_ray()
 
-void	find_wall_distance(int **map, t_ray *ray, int *side)
+void	find_wall_distance(int **map, t_ray *ray, u_int32_t *side)
 {
 	int	hit;
 
 	hit = 0;
 	while (hit == 0)
 	{
-		if (ray->side_dist.x < ray->side_dist.y)
+		if (ray->side_dist->x < ray->side_dist->y)
 		{
-			ray->side_dist.x += ray->delta_dist.x;
+			ray->side_dist->x += ray->delta_dist->x;
 			ray->mapx += ray->stepx;
 			*side = 0;
 		}
 		else
 		{
-			ray->side_dist.y += ray->delta_dist.y;
+			ray->side_dist->y += ray->delta_dist->y;
 			ray->mapy += ray->stepy;
 			*side = 1;
 		}
@@ -45,58 +41,59 @@ void	find_wall_distance(int **map, t_ray *ray, int *side)
 			hit = wall;
 	}
 	if (side == 0)
-		ray->walldist = (sidedist.x - deltadist.x);
+		ray->wall_dist = (ray->side_dist->x - ray->delta_dist->x);
 	else
-		ray->walldist = (sidedist.y - deltadist.y);
+		ray->wall_dist = (ray->side_dist->y - ray->delta_dist->y);
 }
 
-t_collumn	*calculate_collumn(int window_height, t_ray *ray, int *side)
+t_column	*calculate_column(int window_height, t_ray *ray, u_int32_t *side)
 {
-	t_collumn	collumn;
+	t_column	*column;
 	long int	lineheight;
 
-	if (!collumn)
+	column = malloc(sizeof(t_column));
+	if (!column)
 		exit(EXIT_FAILURE);
-	lineheight = (long int)(((double)window_height) / ray->walldist);
-	// printf("windown: %d,%d\n", WINWIDTH, WINHEIGHT);
-	collumn->top = (-lineheight / 2) + (window_height / 2);
-	if (collumn->top < 0)
-		collumn->top = 0;
-	collumn->bottom = (lineheight / 2) + (window_height / 2);
-	if (collumn->bottom > window_height)
-		collumn->bottom = window_height - 1;
-	/*Setting wall colours*/
+	lineheight = (long int)(((double)window_height) / ray->wall_dist);
+	column->top = (-lineheight / 2) + (window_height / 2);
+	if (column->top < 0)
+		column->top = 0;
+	column->bottom = (lineheight / 2) + (window_height / 2);
+	if (column->bottom > window_height)
+		column->bottom = window_height - 1;
 	if (*side == 1 && ray->dir.y > 0)
-		colour = 0xFF0000FF;
+		column->colour = 0xFF0000FF;
 	else if (*side == 1 && ray->dir.y < 0)
-		colour = 0x00FF00FF;
+		column->colour = 0x00FF00FF;
 	else if (*side == 0 && ray->dir.x > 0)
-		colour = 0x0000FFFF;
+		column->colour = 0x0000FFFF;
 	else
-		colour = 0xFFFF00FF;
-	return (collumn);
+		column->colour = 0xFFFF00FF;
+	return (column);
 }
 
-void	raycasting(t_scene *scene, int **map)
+void	raycasting(t_scene *scene)
 {
 	t_ray		*ray;
-	t_collumn	*collumn;
-	int			pxl_x;
-	int			side;
+	t_column	*column;
+	u_int32_t	pxl_x;
+	u_int32_t	side;
 	double		cam_x;
 
-	memset(scene->wall_display->pixels, 0, scene->wall_displ->width \
+	ft_memset(scene->wall_displ->pixels, 0, scene->wall_displ->width \
 			* scene->wall_displ->height * sizeof(int32_t));
 	pxl_x = 0;
 	side = 0;
-	while (psl_x < scene->wall_displ->width)
+	while (pxl_x < scene->wall_displ->width)
 	{
 		cam_x = (2.0 * (double)pxl_x) / (double)scene->wall_displ->width - 1.0;
 		cam_x += (1.0 / (2.0 * (double)scene->wall_displ->width));
+		printf("camx: %lf\n", cam_x);
 		ray = init_ray(scene, cam_x);
-		find_wall_distance(map, ray, &side);
-		collumn = calculate_collumn(scene->window->height, ray, &side);
-		draw_column(pxl_x, drawstart, drawend, colour, scene);
+		find_wall_distance(scene->map, ray, &side);
+		column = calculate_column(scene->window->height, ray, &side);
+		draw_column(pxl_x, column, scene);
+		free(column);
 		pxl_x++;
 	}
 }
