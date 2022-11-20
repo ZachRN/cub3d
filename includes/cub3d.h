@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 14:25:36 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 17:27:45 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/20 19:32:15 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ floor, ceiling, and texture structs. as well as containing the 2d array of
 the parsed map.*/
 typedef struct s_cubed
 {
-	t_rgba		floor;
-	t_rgba		ceiling;
-	t_textures	textures;
-	t_map		info;
-	char		*map_file;
-	int			**map;
+	t_rgba			floor;
+	t_rgba			ceiling;
+	t_textures		textures;
+	t_map			info;
+	char			*map_file;
+	int				**map;
 }				t_cubed;
 
 #endif

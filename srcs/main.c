@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/15 15:06:47 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 18:23:15 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/20 18:48:52 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ int main(int argc, char *argv[])
 {
 	t_cubed cube;
 
-	// atexit(checkleaks);
+	atexit(checkleaks);
 	if (argc != 2)
 		return (0);
 	cube = initialize_cubed();
 	cube = parse_file(cube, argv[1]);
 	test_print_cubed(&cube);
 	start_game_loop(&cube);
-	exit(EXIT_SUCCESS);
+	// exit(EXIT_SUCCESS);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:58:00 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 20:46:52 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/20 23:23:14 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "rays.h"
 #include "draw_images.h"
 #include "ft_memset.h"
+#include "vector_maths.h"
+#include <math.h>
 
 #include <stdio.h>
 
@@ -46,32 +48,49 @@ void	find_wall_distance(int **map, t_ray *ray, u_int32_t *side)
 		ray->wall_dist = (ray->side_dist->y - ray->delta_dist->y);
 }
 
-t_column	*calculate_column(int window_height, t_ray *ray, u_int32_t *side)
+static void	get_texture_column(t_column *column, t_scene *scene, \
+								t_ray *ray, u_int32_t *side)
+{
+	double	x_wall;
+
+	if (*side == 1 && ray->dir.y > 0)
+		column->texture = scene->south;
+	else if (*side == 1 && ray->dir.y < 0)
+		column->texture = scene->north;
+	else if (*side == 0 && ray->dir.x > 0)
+		column->texture = scene->east;
+	else
+		column->texture = scene->west;
+	if (*side == 0)
+		x_wall = scene->player->pos.y + (ray->wall_dist * ray->dir.y);
+	else
+		x_wall = scene->player->pos.x + (ray->wall_dist * ray->dir.x);
+	x_wall -= (long int)x_wall;
+	column->texture_x = (int)(x_wall * (double)column->texture->width);
+	if ((*side == 1 && ray->dir.y < 0) || (*side == 0 && ray->dir.x > 0))
+		column->texture_x = column->texture->width - column->texture_x - 1;
+}
+
+t_column	*calculate_column(t_scene *scene, t_ray *ray, u_int32_t *side)
 {
 	t_column	*column;
-	long int	lineheight;
 
 	column = malloc(sizeof(t_column));
 	if (!column)
 		exit(EXIT_FAILURE);
 	if (ray->wall_dist < EPSILON && ray->wall_dist > -EPSILON)
-		lineheight = window_height;
+		column->lineheight = pow(10, 30);
 	else
-		lineheight = (long int)(((double)window_height) / ray->wall_dist);
-	column->top = (-lineheight / 2) + (window_height / 2);
-	if (column->top < 0)
-		column->top = 0;
-	column->bottom = (lineheight / 2) + (window_height / 2);
-	if (column->bottom > window_height)
-		column->bottom = window_height;
-	if (*side == 1 && ray->dir.y > 0)
-		column->colour = 0xFF0000FF;
-	else if (*side == 1 && ray->dir.y < 0)
-		column->colour = 0x00FF00FF;
-	else if (*side == 0 && ray->dir.x > 0)
-		column->colour = 0x0000FFFF;
-	else
-		column->colour = 0xFFFF00FF;
+		column->lineheight = (long int)(scene->window->height / ray->wall_dist);
+	column->top = (-(column->lineheight) / 2) + (scene->window->height / 2);
+	column->start = column->top;
+	if (column->start < 0)
+		column->start = 0;
+	column->bottom = (column->lineheight / 2) + (scene->window->height / 2);
+	column->end = column->bottom;
+	if (column->end > scene->window->height)
+		column->end = scene->window->height;
+	get_texture_column(column, scene, ray, side);
 	return (column);
 }
 
@@ -83,17 +102,17 @@ void	raycasting(t_scene *scene)
 	u_int32_t	side;
 	double		cam_x;
 
-	ft_memset(scene->wall_displ->pixels, 0, scene->wall_displ->width \
-			* scene->wall_displ->height * sizeof(u_int32_t));
+	ft_memset(scene->walls->pixels, 0, scene->walls->width \
+			* scene->walls->height * sizeof(u_int32_t));
 	pxl_x = 0;
 	side = 0;
-	while (pxl_x < scene->wall_displ->width)
+	while (pxl_x < scene->walls->width)
 	{
-		cam_x = (2.0 * (double)pxl_x) / (double)scene->wall_displ->width - 1.0;
-		cam_x += (1.0 / (2.0 * (double)scene->wall_displ->width));
+		cam_x = (2.0 * (double)pxl_x) / (double)scene->walls->width - 1.0;
+		cam_x += (1.0 / (2.0 * (double)scene->walls->width));
 		ray = init_ray(scene, cam_x);
 		find_wall_distance(scene->map, ray, &side);
-		column = calculate_column(scene->window->height, ray, &side);
+		column = calculate_column(scene, ray, &side);
 		free_ray(ray);
 		draw_column(pxl_x, column, scene);
 		free(column);

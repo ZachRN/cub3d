@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 15:32:35 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 18:31:14 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/20 23:18:37 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	hooks(void *data)
 		player_strafe(-0.1, scene);
 	if (mlx_is_key_down(scene->window, MLX_KEY_D))
 		player_strafe(0.1, scene);
+	if (scene->player->has_moved == true)
+		raycasting(scene);
+	scene->player->has_moved = false;
 }
 
 void	keyhooks(mlx_key_data_t keydata, void *data)

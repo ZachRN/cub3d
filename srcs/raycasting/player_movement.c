@@ -6,13 +6,15 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:17:38 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 20:36:27 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/20 23:17:22 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "raycasting.h"
 #include <math.h>
+
+#include <stdio.h>
 
 void	update_player_rot(double rotation, t_scene *scene)
 {
@@ -21,7 +23,7 @@ void	update_player_rot(double rotation, t_scene *scene)
 										scene->player->base_dir);
 	scene->player->cam = rotate_vector(scene->player->phi, \
 										scene->player->base_cam);
-	raycasting(scene);
+	scene->player->has_moved = true;
 }
 
 void	player_walk(double distance, t_scene *scene)
@@ -35,7 +37,7 @@ void	player_walk(double distance, t_scene *scene)
 		scene->player->pos.x += distance * scene->player->dir.x;
 	if (scene->map[(long int)checky][(long int)scene->player->pos.x] <= 0)
 		scene->player->pos.y += distance * scene->player->dir.y;
-	raycasting(scene);
+	scene->player->has_moved = true;
 }
 
 void	player_strafe(double distance, t_scene *scene)
@@ -51,5 +53,5 @@ void	player_strafe(double distance, t_scene *scene)
 		scene->player->pos.x += distance * strifedir.x;
 	if (scene->map[(long int)checky][(long int)scene->player->pos.x] <= 0)
 		scene->player->pos.y += distance * strifedir.y;
-	raycasting(scene);
+	scene->player->has_moved = true;
 }

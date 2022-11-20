@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture.png
-SO ./path_to_the_south_texture.png
-WE ./path_to_the_west_texture.png
-EA ./path_to_the_east_texture.png
+NO ./textures/bricks.png
+SO ./textures/cobblewall.png
+WE ./textures/woodplanks_color.png
+EA ./textures/woodplanks3.png
 
 F 255,100,0
 C 0,70,255
