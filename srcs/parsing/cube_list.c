@@ -6,15 +6,13 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:27:14 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 14:21:34 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/21 14:10:40 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube_list.h"
 #include "cub3d_errors.h"
 #include "utils.h"
-
-#include <stdio.h>
 
 static t_list_map	*list_add_to_end(t_list_map *head, char *str)
 {

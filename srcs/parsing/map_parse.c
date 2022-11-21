@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:26:52 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 16:38:34 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/21 14:10:49 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "list_to_map.h"
 #include "utils.h"
 #include "map_validation.h"
-
-#include <stdio.h>
 
 t_cubed	malloc_cubed_map(t_cubed cube, t_list_map *head)
 {
@@ -54,6 +52,8 @@ t_cubed	init_map(t_cubed cubed)
 	unsigned int	rows;
 
 	rows = 0;
+	if (cubed.info.max_cols < 2 || cubed.info.max_rows < 2)
+		one_string_error("The map isn't large enough to be valid!");
 	while (rows <= cubed.info.max_rows)
 	{
 		cols = 0;

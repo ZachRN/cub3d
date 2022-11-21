@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:58:00 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/20 23:23:14 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:11:22 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "ft_memset.h"
 #include "vector_maths.h"
 #include <math.h>
-
-#include <stdio.h>
 
 void	find_wall_distance(int **map, t_ray *ray, u_int32_t *side)
 {

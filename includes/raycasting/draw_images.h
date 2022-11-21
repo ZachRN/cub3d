@@ -6,16 +6,16 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:52:40 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/20 21:36:32 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:12:15 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DRAW_IMAGES_H
 # define DRAW_IMAGES_H
 
-#include "MLX42.h"
-#include "scene.h"
-#include "cub3d.h"
+# include "MLX42.h"
+# include "scene.h"
+# include "cub3d.h"
 
 typedef struct s_column
 {

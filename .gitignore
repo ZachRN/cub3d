@@ -1,6 +1,6 @@
 .DS_Store
 *.o
 build/
-cub3d
+cub3D
 .vscode
 *.log

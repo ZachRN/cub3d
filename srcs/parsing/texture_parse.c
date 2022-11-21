@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:29:35 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 17:29:29 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:09:38 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "utils.h"
 #include "cub3d_errors.h"
 #include "cub3d.h"
-
-#include <stdio.h>
 
 char	*texture_parse(char *str)
 {
@@ -101,6 +99,7 @@ t_rgba	color_parse(char *str)
 	free(to_trim);
 	free_my_lines(split_to);
 	to_return.a = 255;
-	to_return.rgba = create_trgb(to_return.r, to_return.g, to_return.b, to_return.a);
+	to_return.rgba = create_trgb(to_return.r, to_return.g, \
+								to_return.b, to_return.a);
 	return (to_return);
 }

@@ -6,15 +6,13 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 14:07:11 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/19 18:56:25 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:11:14 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rays.h"
 #include <math.h>
 #include <stdlib.h>
-
-#include <stdio.h>
 
 static t_vector	*init_ray_delta_dist(t_vector raydir)
 {

@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/16 14:13:24 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 14:28:04 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/21 14:11:02 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "cub3d_errors.h"
 #include "initialize_structs.h"
 #include "texture_parse.h"
-
-#include <stdio.h>
 
 static t_cubed	determine_function(t_cubed cube, char *str)
 {
@@ -68,7 +66,7 @@ static void	duplicate_check(t_checklist *checklist, char c)
 static t_cubed	parse_line(t_cubed cube, char *str, t_checklist *checklist,
 			t_readline *readline)
 {
-	static char	charset[7] = "\nNSWEFC";
+	static char	charset[8] = "\nNSWEFC";
 	int			i;
 
 	i = 0;

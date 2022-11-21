@@ -6,15 +6,13 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:17:38 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/20 23:17:22 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:11:17 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "raycasting.h"
 #include <math.h>
-
-#include <stdio.h>
 
 void	update_player_rot(double rotation, t_scene *scene)
 {

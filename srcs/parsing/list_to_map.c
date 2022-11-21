@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 13:27:02 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 17:41:07 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:10:44 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "cub3d_errors.h"
 #include "cube_list.h"
 #include "utils.h"
-
-#include <stdio.h>
 
 void	is_in_set(char c, char *set)
 {

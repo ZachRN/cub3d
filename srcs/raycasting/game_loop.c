@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 15:17:55 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/20 19:08:33 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:18:56 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	start_game_loop(t_cubed *cubed)
 	mlx_loop_hook(scene->window, &hooks, scene);
 	mlx_key_hook(scene->window, &keyhooks, scene);
 	mlx_loop(scene->window);
-	mlx_terminate(scene->window);
+	mlx_delete_image(scene->window, background);
 	free_scene(scene);
 }

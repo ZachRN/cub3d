@@ -6,7 +6,7 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:20:46 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/20 23:15:09 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:19:20 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "cub3d.h"
 #include "scene.h"
 #include <stdlib.h>
-
-#include <stdio.h>
 
 static t_player	*init_player(t_map *map_info, int fov)
 {
@@ -38,6 +36,14 @@ static t_player	*init_player(t_map *map_info, int fov)
 	return (player);
 }
 
+static void	free_cubed_textures(t_textures *textures)
+{
+	free(textures->north);
+	free(textures->east);
+	free(textures->south);
+	free(textures->west);
+}
+
 t_scene	*init_scene(t_cubed *cubed, char *win_name)
 {
 	t_scene			*scene;
@@ -57,6 +63,7 @@ t_scene	*init_scene(t_cubed *cubed, char *win_name)
 	scene->east = mlx_load_png(cubed->textures.east);
 	scene->south = mlx_load_png(cubed->textures.south);
 	scene->west = mlx_load_png(cubed->textures.west);
+	free_cubed_textures(&cubed->textures);
 	if (!scene->north || !scene->east || !scene->south || !scene->west)
 		exit(EXIT_FAILURE);
 	scene->map = cubed->map;
@@ -66,5 +73,11 @@ t_scene	*init_scene(t_cubed *cubed, char *win_name)
 void	free_scene(t_scene *scene)
 {
 	free(scene->player);
+	mlx_delete_image(scene->window, scene->walls);
+	mlx_delete_texture(scene->north);
+	mlx_delete_texture(scene->east);
+	mlx_delete_texture(scene->south);
+	mlx_delete_texture(scene->west);
+	mlx_terminate(scene->window);
 	free(scene);
 }

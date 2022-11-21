@@ -6,15 +6,14 @@
 /*   By: mteerlin <mteerlin@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:50:01 by mteerlin      #+#    #+#                 */
-/*   Updated: 2022/11/20 23:22:20 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:11:06 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw_images.h"
 #include "cub3d.h"
 #include "ft_memset.h"
-
-#include <stdio.h>
+#include <stdlib.h>
 
 static void	set_colour_to_pixel(u_int32_t rgba, u_int8_t *pixel)
 {
@@ -43,6 +42,8 @@ mlx_image_t	*set_background(t_scene *scene, t_cubed *cubed)
 
 	background = mlx_new_image(scene->window, scene->window->width, \
 								scene->window->height);
+	if (!background)
+		exit(EXIT_FAILURE);
 	idx = 0;
 	while (idx < (background->width * background->height / 2))
 	{

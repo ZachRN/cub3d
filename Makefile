@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 BUILD_DIR = build
 VPATH := $(subst $(" "),:,$(shell find srcs -type d))
 SRCS += $(wildcard srcs/*.c srcs/*/*.c) 
@@ -23,7 +23,7 @@ $(BUILD_DIR)/%.o: %.c
 
 $(MLXLIB):
 	@echo Generating mlx42
-	@make -C $(MLXDIR) > /dev/null
+	@make -C $(MLXDIR) DEBUG=1 > /dev/null
 
 build_dir:
 	clear

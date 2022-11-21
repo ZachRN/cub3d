@@ -1,6 +1,6 @@
-SO /Users/mteerlin/Documents/Project_Cub3d/Cub3d_gh/textures/Cracked_Deepslate_Bricks_(texture)_JE1.png
+SO ./Cub3d_gh/textures/Cracked_Deepslate_Bricks_(texture)_JE1.png
 NO ./textures/Mossy_Stone_Bricks_(texture)_JE3_BE2.png
-WE /Users/mteerlin/Documents/Project_Cub3d/Cub3d_gh/textures/Stone_Bricks_(texture)_JE3_BE2.png
+WE ./Cub3d_gh/textures/Stone_Bricks_(texture)_JE3_BE2.png
 EA ./textures/Cracked_Stone_Bricks_(texture)_JE3_BE2.png
 
 F 250,125,125

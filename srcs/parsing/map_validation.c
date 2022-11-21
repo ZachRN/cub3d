@@ -6,15 +6,13 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/19 12:50:25 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/19 13:12:15 by znajda        ########   odam.nl         */
+/*   Updated: 2022/11/21 14:10:59 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "cub3d_errors.h"
 #include "extension_check.h"
-
-#include <stdio.h>
 
 void	check_edge(t_cubed cubed)
 {
@@ -96,8 +94,6 @@ void	check_texture_extension(t_cubed cubed)
 
 void	map_validation(t_cubed cubed)
 {
-	if (cubed.info.max_cols < 2 || cubed.info.max_rows < 2)
-		one_string_error("The map isn't large enough to be valid!");
 	check_edge(cubed);
 	check_inside_cube(cubed);
 	check_texture_extension(cubed);
