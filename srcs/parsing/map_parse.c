@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:26:52 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/21 14:10:49 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 14:53:57 by mteerlin      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ t_cubed	malloc_cubed_map(t_cubed cube, t_list_map *head)
 	t_list_map		*search;
 	unsigned int	i;
 
-	i = 0;
 	search = head;
-	while (search->next)
+	while (search)
 	{
 		if ((unsigned int)ft_strlen(search->str) > cube.info.max_cols)
 			cube.info.max_cols = (unsigned int)ft_strlen(search->str) - 1;
+		cube.info.max_rows =  search->line + 1;
 		search = search->next;
 	}
-	cube.info.max_rows = search->line + 1;
 	cube.map = (int **)malloc((cube.info.max_rows + 1) * sizeof(int *));
 	if (!cube.map)
 		two_strings_error(MALLOC_ERROR, "map_parse.c; line");
+	i = 0;
 	while (i <= cube.info.max_rows)
 	{
 		cube.map[i] = (int *)malloc(cube.info.max_cols * sizeof(int));
