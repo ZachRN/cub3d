@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 13:27:02 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/21 14:10:44 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 15:13:18 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "cub3d_errors.h"
 #include "cube_list.h"
 #include "utils.h"
+
+#include <stdio.h>
 
 void	is_in_set(char c, char *set)
 {
@@ -44,10 +46,10 @@ t_cubed	determine_player_direction(t_cubed cube, char c)
 
 t_cubed	parse_single_line(t_cubed cube, int line, char *str)
 {
-	int	x;
+	unsigned int	x;
 
 	x = 0;
-	while (str && str[x])
+	while (str && str[x] && x <= cube.info.max_cols)
 	{
 		is_in_set(str[x], " 01NSWE\n");
 		if (str[x] == ' ')

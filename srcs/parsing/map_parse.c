@@ -6,7 +6,7 @@
 /*   By: znajda <znajda@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/18 12:26:52 by znajda        #+#    #+#                 */
-/*   Updated: 2022/11/21 14:10:49 by mteerlin      ########   odam.nl         */
+/*   Updated: 2022/11/21 15:32:38 by znajda        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@
 
 t_cubed	malloc_cubed_map(t_cubed cube, t_list_map *head)
 {
-	t_list_map		*search;
-	unsigned int	i;
+	t_list_map			*search;
+	static unsigned int	i = 0;
 
-	i = 0;
 	search = head;
-	while (search->next)
+	while (search)
 	{
 		if ((unsigned int)ft_strlen(search->str) > cube.info.max_cols)
 			cube.info.max_cols = (unsigned int)ft_strlen(search->str) - 1;
+		if (cube.info.max_cols == (unsigned int)ft_strlen(search->str) - 1 \
+										&& !search->next)
+			cube.info.max_cols++;
+		cube.info.max_rows = search->line + 1;
 		search = search->next;
 	}
-	cube.info.max_rows = search->line + 1;
 	cube.map = (int **)malloc((cube.info.max_rows + 1) * sizeof(int *));
 	if (!cube.map)
 		two_strings_error(MALLOC_ERROR, "map_parse.c; line");
@@ -41,8 +43,6 @@ t_cubed	malloc_cubed_map(t_cubed cube, t_list_map *head)
 			two_strings_error(MALLOC_ERROR, "map_parse.c; line");
 		i++;
 	}
-	cube.info.max_rows--;
-	cube.info.max_cols--;
 	return (cube);
 }
 
@@ -76,7 +76,8 @@ void	delete_list(t_list_map *head)
 	{
 		search = head;
 		head = head->next;
-		free(search->str);
+		if (search->str)
+			free(search->str);
 		free(search);
 	}
 }
@@ -88,6 +89,8 @@ t_cubed	parse_map(t_cubed cubed, int map_fd)
 	head = read_map_list(map_fd);
 	close(map_fd);
 	cubed = malloc_cubed_map(cubed, head);
+	cubed.info.max_rows--;
+	cubed.info.max_cols--;
 	cubed = init_map(cubed);
 	cubed = parse_list_to_map(cubed, head);
 	delete_list(head);

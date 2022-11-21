@@ -4,7 +4,7 @@ VPATH := $(subst $(" "),:,$(shell find srcs -type d))
 SRCS += $(wildcard srcs/*.c srcs/*/*.c) 
 OBJ_FILES = $(addprefix $(BUILD_DIR)/, $(notdir $(patsubst %.c, %.o, $(SRCS))))
 HEADER_FILES := $(addprefix -I,$(shell find includes -type d -print))
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 MLXFLAGS = -I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 MLXDIR = ./includes/mlx42/
 MLXLIB = $(MLXDIR)libmlx42.a
